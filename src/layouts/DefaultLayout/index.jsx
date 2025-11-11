@@ -1,13 +1,13 @@
-import { Outlet } from "react-router"
-import Sidebar from "./components/Sidebar"
+import { Outlet } from "react-router";
+import Sidebar from "./components/Sidebar";
 
 function DefaultLayout() {
-    return (
-        <div>
-            <Sidebar />
-            <Outlet />
-        </div>
-    )
+  return (
+    <div className="h-screen">
+      <Sidebar />
+      <Outlet />
+    </div>
+  );
 }
 
-export default DefaultLayout
+export default DefaultLayout;
