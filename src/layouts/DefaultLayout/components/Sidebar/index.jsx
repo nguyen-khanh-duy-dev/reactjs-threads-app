@@ -1,10 +1,9 @@
-import SidebarItem from "./SidebarItem";
+import { useState } from "react";
 import {
   faHeart as farHeart,
   faUser as farUser,
   faHouse as farHouse,
 } from "@fortawesome/free-regular-svg-icons";
-
 import {
   faMagnifyingGlass,
   faPlus,
@@ -12,8 +11,12 @@ import {
   faHeart as fasHeart,
   faUser as fasUser,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { faThreads } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import SidebarItem from "./SidebarItem";
+import Dropdown from "./Dropdown";
+import ThemeToggle from "./ThemeToggle";
 
 const SIDEBAR_ITEMS = [
   {
@@ -54,14 +57,14 @@ const SIDEBAR_ITEMS = [
 ];
 
 function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex h-full w-20 flex-col items-center justify-between pr-1 pl-1">
-      <img
-        src="threads_logo.svg"
-        alt="logo"
-        className="w-1/2 py-4 hover:scale-105 cursor-pointer"
+      <FontAwesomeIcon
+        icon={faThreads}
+        className="text-foreground cursor-pointer py-4 text-4xl hover:scale-105"
       />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2.5">
         {SIDEBAR_ITEMS.map((item) => (
           <SidebarItem
             key={item.id}
@@ -72,11 +75,24 @@ function Sidebar() {
           />
         ))}
       </div>
-      <div className="group mb-5 flex cursor-pointer flex-col gap-1.5 p-4">
-        <div className="bg-muted-foreground group-hover:bg-foreground h-[3px] w-6 transition-colors"></div>
-
-        <div className="bg-muted-foreground group-hover:bg-foreground h-[3px] w-4 transition-colors"></div>
-      </div>
+      <Dropdown
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        children={
+          <div className="group mb-5 flex cursor-pointer flex-col gap-1.5 p-4 transition-transform active:scale-95">
+            <div
+              className={`group-hover:bg-foreground h-[3px] w-5 transition-colors ${
+                isOpen ? "bg-foreground" : "bg-muted-foreground"
+              }`}
+            ></div>
+            <div
+              className={`group-hover:bg-foreground h-[3px] w-3 transition-colors ${
+                isOpen ? "bg-foreground" : "bg-muted-foreground"
+              }`}
+            ></div>
+          </div>
+        }
+      />
     </div>
   );
 }

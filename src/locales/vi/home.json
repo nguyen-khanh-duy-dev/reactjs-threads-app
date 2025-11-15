@@ -1,7 +1,27 @@
 {
-    "content": {
-        "for you": "Dành cho bạn",
-        "post": "Đăng",
-        "what's new": "Có gì mới?"
-    }
+  "content": {
+    "for you": "Dành cho bạn",
+    "post": "Đăng",
+    "what's new": "Có gì mới?",
+    "addToFeed": "Thêm vào bảng feed",
+    "save": "Lưu",
+    "notInterested": "Không quan tâm",
+    "mute": "Tắt thông báo",
+    "restrict": "Hạn chế",
+    "block": "Chặn",
+    "report": "Báo cáo",
+    "copyLink": "Sao chép liên kêt"
+  },
+  "sidebar": {
+    "appearance": "Giao diện",
+    "language": "Ngôn ngữ",
+    "about": "Thông tin chi tiết",
+    "settings": "Cài đặt",
+    "feed": "Bảng feed",
+    "saved": "Đã lưu",
+    "likes": "Đã thích",
+    "reportProblem": "Báo cáo sự cố",
+    "logout": "Đăng xuất",
+    "auto": "Tự động"
+  }
 }

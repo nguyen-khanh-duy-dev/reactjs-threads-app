@@ -5,16 +5,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { t } from "i18next";
 
 function SidebarItem({ iconRegular, iconSolid, tooltip, path }) {
   // Các class này vẫn giữ nguyên
   const navLinkBaseClasses =
-    "flex items-center justify-center cursor-pointer rounded-xl p-3 text-2xl text-muted-foreground transition-colors duration-200"; // Xóa w-[90%] ở đây
+    "flex items-center justify-center cursor-pointer rounded-xl p-3 text-2xl text-muted-foreground transition-colors duration-200 active:scale-95 transition-transform";
   const navLinkHoverClasses = "hover:bg-sidebar-accent";
   const navLinkActiveClasses = "text-sidebar-foreground font-bold";
 
   const buttonClasses =
-    "flex items-center justify-center cursor-pointer rounded-xl p-3 text-2xl hover:text-sidebar-foreground text-muted-foreground transition-colors duration-200 bg-sidebar-accent"; // Xóa w-[90%] ở đây
+    "flex items-center justify-center cursor-pointer rounded-xl p-3 text-2xl hover:text-sidebar-foreground text-muted-foreground transition-colors duration-200 bg-sidebar-accent active:scale-95 transition-transform";
 
   return (
     <Tooltip delayDuration={1000}>
@@ -43,7 +44,7 @@ function SidebarItem({ iconRegular, iconSolid, tooltip, path }) {
         side="right"
         className="rounded-md border-none bg-black text-white"
       >
-        <p>{tooltip}</p>
+        <p>{t(tooltip)}</p>
       </TooltipContent>
     </Tooltip>
   );

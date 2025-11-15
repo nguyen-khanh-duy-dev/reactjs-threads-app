@@ -1,0 +1,8 @@
+{
+  "provider": {
+    "type": "gemini"
+  },
+  "commit": {
+    "commitFormat": "emoji"
+  }
+}

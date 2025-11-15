@@ -1,7 +1,27 @@
 {
-    "content": {
-        "for you": "For you",
-        "post": "Post",
-        "what's new": "What's new?"
-    }
+  "content": {
+    "for you": "For you",
+    "post": "Post",
+    "what's new": "What's new?",
+    "addToFeed": "Add to feed",
+    "save": "Save",
+    "notInterested": "Not interested",
+    "mute": "Mute",
+    "restrict": "Restrict",
+    "block": "Block",
+    "report": "Report",
+    "copyLink": "Copy Link"
+  },
+  "sidebar": {
+    "appearance": "Appearance",
+    "language": "Language",
+    "about": "About",
+    "settings": "Settings",
+    "feed": "Feed",
+    "saved": "Saved",
+    "likes": "Likes",
+    "reportProblem": "Report a problem",
+    "logout": "Log out",
+    "auto": "Auto"
+  }
 }
