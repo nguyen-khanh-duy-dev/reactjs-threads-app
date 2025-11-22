@@ -10,7 +10,8 @@
     "restrict": "Restrict",
     "block": "Block",
     "report": "Report",
-    "copyLink": "Copy Link"
+    "copyLink": "Copy Link",
+    "home": "Home"
   },
   "sidebar": {
     "appearance": "Appearance",

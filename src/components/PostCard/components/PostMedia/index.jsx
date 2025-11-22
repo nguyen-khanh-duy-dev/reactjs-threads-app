@@ -64,7 +64,7 @@ function AudioPreview({ mediaItem }) {
 // --- COMPONENT CON SỐ 4: Carousel (Cho nhiều ảnh/video) ---
 function MediaCarousel({ media }) {
   return (
-    <div className="overflow-hidden rounded-lg border">
+    <div className="overflow-hidden rounded-lg">
       <Carousel
         className="w-full"
         opts={{
@@ -96,8 +96,6 @@ function MediaCarousel({ media }) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-2 hidden md:flex" />
-        <CarouselNext className="absolute right-2 hidden md:flex" />
       </Carousel>
     </div>
   );

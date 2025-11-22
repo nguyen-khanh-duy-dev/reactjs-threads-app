@@ -37,6 +37,9 @@ const postData = {
     // Hoặc nhiều ảnh
     { type: "image", url: "https://picsum.photos/300/600" },
     { type: "image", url: "https://picsum.photos/300/600" },
+    { type: "image", url: "https://picsum.photos/300/600" },
+    { type: "image", url: "https://picsum.photos/300/600" },
+    { type: "image", url: "https://picsum.photos/300/600" },
     // Hoặc video
     // { type: "video", url: "https://.../video.mp4", thumbnailUrl: "..." }
     // Hoặc audio (như ví dụ hôm qua)
@@ -51,7 +54,7 @@ const postData = {
 
 function PostCard() {
   return (
-    <Card className="w-full self-start border-r-0 border-l-0 p-4">
+    <Card className="w-full self-start rounded-none border-0 border-b p-4 last:border-b-0">
       <div className="flex flex-row gap-3">
         {/* --- avatar --- */}
         <div className="group relative shrink-0 self-start">

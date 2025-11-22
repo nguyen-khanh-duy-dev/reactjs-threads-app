@@ -5,10 +5,21 @@ import "@/styles/index.css";
 import { ThemeProvider } from "./components/ThemeProvider/index.jsx";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+// RTK: store and provider
+import { persistor, store } from "@/stores";
+import { Provider as ProviderRTK } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+console.log(store);
+
 createRoot(document.getElementById("root")).render(
   <ThemeProvider defaultTheme="dark" storageKey="my-app-theme">
     <TooltipProvider>
-      <App />
+      <ProviderRTK store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </ProviderRTK>
     </TooltipProvider>
   </ThemeProvider>,
 );

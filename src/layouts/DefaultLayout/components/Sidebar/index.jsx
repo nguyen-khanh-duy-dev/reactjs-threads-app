@@ -59,7 +59,7 @@ const SIDEBAR_ITEMS = [
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex h-full w-20 flex-col items-center justify-between pr-1 pl-1">
+    <div className="fixed flex h-full w-20 flex-col items-center justify-between pr-1 pl-1 top-0 left-0">
       <FontAwesomeIcon
         icon={faThreads}
         className="text-foreground cursor-pointer py-4 text-4xl hover:scale-105"

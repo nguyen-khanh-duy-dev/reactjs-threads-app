@@ -7,10 +7,10 @@ import AuthLayout from "@/layouts/AuthLayout";
 // Pages
 import Home from "@/pages/Home";
 import Search from "@/pages/Search";
-import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
 import Activity from "@/pages/Activity";
 import User from "@/pages/User";
+import Login from "@/pages/Auth/Login";
 
 function AppRoutes() {
   return (
@@ -26,7 +26,7 @@ function AppRoutes() {
 
         {/* Auth layout */}
         <Route element={<AuthLayout />}>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
