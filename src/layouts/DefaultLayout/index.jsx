@@ -1,23 +1,49 @@
+import { useState } from "react";
 import { Outlet } from "react-router";
-import Sidebar from "./components/Sidebar"; // Cột 1 (Trái)
-// import RightPanel from "./components/RightPanel"; // Cột 3 (Phải)
+
+import Sidebar from "./components/Sidebar";
 import AddButton from "./components/AddButton";
+import { useCurrentUser } from "@/features/auth";
+import AddNewPostModal from "@/components/AddNewPostModal";
 
 function DefaultLayout() {
+  const currentUser = useCurrentUser();
+
+  const [showPostModal, setShowPostModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowPostModal(true);
+  };
+
   return (
     <div className="relative">
       <div className="fixed top-0 left-0 h-screen w-20">
         <Sidebar />
       </div>
 
-      <main className="ml-20 flex justify-center ">
+      <main className="ml-20 flex justify-center">
         <Outlet />
       </main>
 
       {/* Nút AddButton vẫn fixed */}
-      <div className="fixed right-6 bottom-6">
-        <AddButton />
-      </div>
+      {currentUser ? (
+        <>
+          <div className="fixed right-6 bottom-6" onClick={handleOpenModal}>
+            <AddButton />
+          </div>
+
+          <AddNewPostModal
+            open={showPostModal}
+            onOpenChange={setShowPostModal}
+            isModal={false}
+            onInteractOutside={(e) => {
+              e.preventDefault();
+            }}
+          />
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

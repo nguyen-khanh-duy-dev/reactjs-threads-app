@@ -24,5 +24,12 @@
     "reportProblem": "Report a problem",
     "logout": "Log out",
     "auto": "Auto"
+  },
+  "loginPrompt": {
+    "loginOrSignUp": "Login Or Sign Up",
+    "seeWhatPeopleAreTalkingAboutAndJoinTheConversation.": "See what people are talking about and join the conversation.",
+    "loginToSeeMore": "Login To See More",
+    "don'tHaveAnAccount?": "Don't have an account?",
+    "SignUpNow": "Sign Up Now"
   }
 }

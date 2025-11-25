@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart, MessageCircle, Repeat, Send } from "lucide-react";
+import { formatCompactNumber } from "../../helpers";
 
 function InteractionBar({
   likeCount = null,
@@ -19,7 +20,11 @@ function InteractionBar({
         className={`${baseClassesBtn} ${likeCount ? "px-8" : ""}`}
       >
         <Heart className="h-5! w-5!" />
-        {likeCount && <span className={`${baseClassesText}`}>{likeCount}</span>}
+        {likeCount && likeCount > 0 ? (
+          <span className={`${baseClassesText}`}>
+            {formatCompactNumber(likeCount)}
+          </span>
+        ) : null}
       </Button>
 
       {/* Comment Button */}
@@ -29,9 +34,9 @@ function InteractionBar({
         className={`${baseClassesBtn} ${commentCount ? "px-8" : ""}`}
       >
         <MessageCircle className="h-5! w-5!" />
-        {commentCount && (
+        {commentCount && commentCount > 0 ? (
           <span className={`${baseClassesText}`}>{commentCount}</span>
-        )}
+        ) : null}
       </Button>
 
       {/* RePost Button */}
@@ -41,9 +46,9 @@ function InteractionBar({
         className={`${baseClassesBtn} ${rePostCount ? "px-8" : ""}`}
       >
         <Repeat className="h-5! w-5!" />
-        {rePostCount && (
+        {rePostCount && rePostCount > 0 ? (
           <span className={`${baseClassesText}`}>{rePostCount}</span>
-        )}
+        ) : null}
       </Button>
 
       {/* Share Button */}
@@ -53,9 +58,9 @@ function InteractionBar({
         className={`${baseClassesBtn} ${shareCount ? "px-8" : ""}`}
       >
         <Send strokeWidth={1.5} className="h-5! w-5!" />
-        {shareCount && (
+        {shareCount && shareCount ? (
           <span className={`${baseClassesText}`}>{shareCount}</span>
-        )}
+        ) : null}
       </Button>
     </div>
   );

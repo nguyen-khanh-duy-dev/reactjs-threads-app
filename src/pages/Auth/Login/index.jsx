@@ -43,7 +43,7 @@ function Login() {
   const dispatch = useDispatch();
   const [params] = useSearchParams();
 
-  // Lấy trạng thái user hiện tại từ Redux (Logic Code 1)
+  // Lấy trạng thái user hiện tại từ Redux
   const currentUser = useCurrentUser();
 
   const form = useForm({

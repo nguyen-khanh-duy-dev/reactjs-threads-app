@@ -24,5 +24,12 @@
     "reportProblem": "Báo cáo sự cố",
     "logout": "Đăng xuất",
     "auto": "Tự động"
+  },
+  "loginPrompt": {
+    "loginOrSignUp": "Đăng nhập hoặc đăng ký",
+    "seeWhatPeopleAreTalkingAboutAndJoinTheConversation.": "Xem mọi người đang nói về điều gì và tham gia cuộc trò chuyện.",
+    "loginToSeeMore": "Đăng nhập để xem thêm",
+    "don'tHaveAnAccount?": "Bạn chưa có tài khoản?",
+    "SignUpNow": "Đăng ký ngay"
   }
 }

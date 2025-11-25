@@ -1,18 +1,20 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { persistStore, persistReducer } from "redux-persist";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 import { authSlice } from "@/features/auth";
+import { postsApi } from "@/features/posts";
 
 const rootReducer = combineReducers({
   [authSlice.reducerPath]: authSlice.reducer,
+  [postsApi.reducerPath]: postsApi.reducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: [``],
+  blacklist: [`${[postsApi.reducerPath]}`],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -23,6 +25,7 @@ const store = configureStore({
     ...getDefaultMiddlewares({
       serializableCheck: false,
     }),
+    postsApi.middleware,
   ],
 });
 // Tạo 'persistor' từ store. Persistor chịu trách nhiệm
