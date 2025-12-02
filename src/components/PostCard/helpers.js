@@ -6,6 +6,7 @@ function getFallbackInitials(userName) {
   const initials = words.map((word) => word[0]).join("");
   return initials.substring(0, 2).toUpperCase();
 }
+
 function formatPostTime(createdAt) {
   if (!createdAt) return "";
 

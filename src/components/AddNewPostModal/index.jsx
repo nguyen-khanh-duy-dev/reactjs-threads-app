@@ -52,7 +52,7 @@ function AddNewPostModal({
         className={cn(
           "bg-background flex flex-col gap-0 overflow-hidden rounded-2xl border p-0 shadow-xl sm:max-w-[600px]",
           "[&>button[type=button]]:hidden",
-          // Loại bỏ hiệu ứng mờ nền mặc định nếu có (dù modal=false đã xử lý, thêm cho chắc)
+          // Loại bỏ hiệu ứng mờ nền mặc định nếu có
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           className, // Class tùy biến vị trí từ bên ngoài
         )}
@@ -95,7 +95,7 @@ function AddNewPostModal({
         </div>
 
         {/* --- BODY --- */}
-        <div className="flex gap-3 px-4 pb-4">
+        <div className="flex gap-3 overflow-y-auto px-4 pb-4">
           {/* CỘT TRÁI: Avatar & Dây nối */}
           <div className="flex flex-col items-center pt-1">
             <Avatar className="h-10 w-10 cursor-pointer">

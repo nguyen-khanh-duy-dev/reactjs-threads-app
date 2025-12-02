@@ -20,23 +20,23 @@ function LoginPromptModal({ open, onOpenChange, icon, title, description }) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="rounded-2xl p-8 pt-10 text-center sm:max-w-[400px]">
         <DialogHeader className="flex flex-col items-center gap-2 space-y-0">
-          {/* 1. Icon tùy biến */}
+          {/* Icon tùy biến */}
           <div className="text-destructive mb-2 flex items-center justify-center text-5xl">
             {icon}
           </div>
 
-          {/* 2. Tiêu đề tùy biến */}
+          {/* Tiêu đề tùy biến */}
           <DialogTitle className="text-2xl font-bold tracking-tight">
             {title}
           </DialogTitle>
 
-          {/* 3. Mô tả tùy biến */}
+          {/* Mô tả tùy biến */}
           <DialogDescription className="text-muted-foreground text-center text-base">
             {description}
           </DialogDescription>
         </DialogHeader>
 
-        {/* 4. Nút Action Cố định */}
+        {/*  Nút Action Cố định */}
         <div className="mt-6 w-full">
           <Button
             className="w-full rounded-xl py-6 text-base font-semibold"

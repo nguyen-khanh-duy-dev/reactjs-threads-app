@@ -10,8 +10,6 @@ import { persistor, store } from "@/stores";
 import { Provider as ProviderRTK } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-console.log(store);
-
 createRoot(document.getElementById("root")).render(
   <ThemeProvider defaultTheme="dark" storageKey="my-app-theme">
     <TooltipProvider>

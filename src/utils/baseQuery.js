@@ -1,14 +1,30 @@
-import { fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-const baseQuery = fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_API,
-    prepareHeaders: (headers) => {
-        const token = localStorage.getItem("accessToken")
-        if (token) {
-            headers.set("Authorization", `Bearer ${token}`)
-        }
+// src/utils/baseQuery.js
+import { httpClient } from "@/utils/http"; // Import axios instance đã cấu hình interceptor
 
-        return headers
-    },
-})
+const axiosBaseQuery =
+  ({ baseUrl } = { baseUrl: "" }) =>
+  async ({ url, method, data, params, headers }) => {
+    try {
+      // Gọi Axios (nó sẽ tự chạy qua interceptor check token hết hạn)
+      const result = await httpClient({
+        url: baseUrl + url,
+        method,
+        data,
+        params,
+        headers,
+      });
 
-export default baseQuery
+      // RTK Query yêu cầu trả về object { data: ... }
+      return { data: result.data };
+    } catch (axiosError) {
+      // Xử lý lỗi trả về chuẩn format RTK Query
+      return {
+        error: {
+          status: axiosError.response?.status,
+          data: axiosError.response?.data || axiosError.message,
+        },
+      };
+    }
+  };
+
+export default axiosBaseQuery;
