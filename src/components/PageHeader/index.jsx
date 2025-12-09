@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 
+// eslint-disable-next-line no-unused-vars
 function PageHeader({ currentPage = "home", handleReload, previous = false }) {
   const { t } = useTranslation("home");
 

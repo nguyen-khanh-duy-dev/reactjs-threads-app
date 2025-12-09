@@ -14,13 +14,17 @@ import { useCurrentUser } from "@/features/auth/hooks";
 import { useLikePostMutation } from "@/features/posts";
 import { toast } from "sonner";
 import LoginPromptModal from "../LoginPromptModal";
-import UserProfileHoverCard from "../ProfileHoverCard";
+import UserProfileHoverCard from "../UserProfileInfo/ProfileHoverCard";
+import { UserProfileModal } from "../UserProfileInfo/UserProfileInfoModal";
 
 function PostCard({ postData }) {
   const currentUser = useCurrentUser();
 
   //State điều khiển Modal Login
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  // State điều khiển modal userInfoModal
+  const [showUserInfoModal, setShowUserInfoModal] = useState(false);
 
   // Gọi hook mutation từ API
   const [likePost] = useLikePostMutation();
@@ -44,20 +48,29 @@ function PostCard({ postData }) {
     }
   };
 
+  // Xử lý follow user ở avatar
+  const handleOpenUserInfoModal = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    setShowUserInfoModal(true);
+  };
+
   return (
     <>
       <Card className="w-full self-start rounded-none border-0 border-b p-4 shadow-none last:border-b-0">
         <div className="flex flex-row gap-3">
           {/* Avatar Section */}
           <div className="group relative shrink-0 self-start">
-            <UserProfileHoverCard userData={postData.user}>
-              <Avatar className="h-9 w-9 cursor-pointer">
-                <AvatarImage src={postData.user.avatar_url} />
-                <AvatarFallback>
-                  {getFallbackInitials(postData.user.username)}
-                </AvatarFallback>
-              </Avatar>
-            </UserProfileHoverCard>
+            <Avatar
+              className="h-9 w-9 cursor-pointer"
+              onClick={handleOpenUserInfoModal}
+            >
+              <AvatarImage src={postData.user.avatar_url} />
+              <AvatarFallback>
+                {getFallbackInitials(postData.user.username)}
+              </AvatarFallback>
+            </Avatar>
             <div className="bg-primary text-primary-foreground border-primary-foreground absolute top-5.5 right-0 flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border transition-transform group-hover:scale-105 group-active:scale-100">
               <Plus className="h-2.5 w-2.5" />
             </div>
@@ -99,6 +112,12 @@ function PostCard({ postData }) {
           </div>
         </div>
       </Card>
+
+      <UserProfileModal
+        open={showUserInfoModal}
+        onOpenChange={setShowUserInfoModal}
+        userData={postData.user}
+      />
 
       <LoginPromptModal
         open={showLoginModal}

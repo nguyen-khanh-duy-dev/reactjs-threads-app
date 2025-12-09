@@ -8,19 +8,54 @@ export const postsApi = createApi({
   tagTypes: ["Posts", "Followings"],
 
   endpoints: (builder) => ({
-    // ... getPosts giữ nguyên ...
     getPosts: builder.query({
+      // 1. Nhận vào object chứa userId và page
       // eslint-disable-next-line no-unused-vars
-      query: (userId) => ({
+      query: ({ userId, page = 1 }) => ({
         url: `/api/posts/feed`,
         method: "get",
-        params: { type: "for_you" },
+        params: {
+          type: "for_you",
+          page: page, // Gửi page lên server
+        },
       }),
-      transformResponse: (response) => response.data || [],
+
+      // 2. Transform: Trả về cấu trúc { posts, pagination } để tiện xử lý
+      transformResponse: (response) => {
+        return {
+          posts: response.data || [],
+          pagination: response.pagination, // Giữ lại thông tin phân trang
+        };
+      },
+
+      // 3. Serialize: Chỉ tạo cache key dựa trên userId (hoặc 'guest').
+      // Thay đổi 'page' sẽ KHÔNG tạo cache mới mà dùng chung cache này.
+      serializeQueryArgs: ({ endpointName, queryArgs }) => {
+        return `${endpointName}(${queryArgs.userId ?? "guest"})`;
+      },
+
+      // 4. Merge: Khi có dữ liệu mới (trang tiếp theo), nối nó vào mảng cũ
+      merge: (currentCache, newItems) => {
+        if (newItems.pagination.current_page === 1) {
+          // Nếu là trang 1 (ví dụ reload), thay thế hoàn toàn
+          currentCache.posts = newItems.posts;
+          currentCache.pagination = newItems.pagination;
+        } else {
+          // Nếu là trang 2, 3... thì nối thêm vào
+          currentCache.posts.push(...newItems.posts);
+          currentCache.pagination = newItems.pagination;
+        }
+      },
+
+      // 5. Force Refetch: Chỉ gọi lại API nếu page thay đổi
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg?.page !== previousArg?.page;
+      },
+
       providesTags: (result) =>
-        result
+        result?.posts
           ? [
-              ...result.map(({ id }) => ({ type: "Posts", id })),
+              ...result.posts.map(({ id }) => ({ type: "Posts", id })),
               { type: "Posts", id: "LIST" },
             ]
           : [{ type: "Posts", id: "LIST" }],

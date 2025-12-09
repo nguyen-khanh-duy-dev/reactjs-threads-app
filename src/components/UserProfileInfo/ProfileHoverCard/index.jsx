@@ -11,13 +11,13 @@ import { CalendarDays, Loader2 } from "lucide-react";
 // Hooks
 import { useCurrentUser } from "@/features/auth/hooks";
 import { toast } from "sonner";
-import { UnfollowDialog } from "../UnfollowDialog";
+import { UnfollowDialog } from "../../UnfollowDialog";
 // Import hook lấy danh sách following
 import {
   useFollowUserMutation,
   useGetUserFollowingsQuery,
 } from "@/features/posts";
-import { getFallbackInitials } from "../helper";
+import { getFallbackInitials } from "../../helper";
 
 export function UserProfileHoverCard({ children, userData }) {
   const user = userData || {};
